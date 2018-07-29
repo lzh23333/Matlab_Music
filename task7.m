@@ -23,5 +23,14 @@ plot(wave_proc);
 title('wave\_proc');
 
 corr = sum(wave2proc.*wave_proc) /norm(wave2proc)/norm(wave_proc) %求相关系数
+%fourier分析
 fs = 8000;
-
+figure(2);
+[F,f] = fft_analyse(realwave,8000);
+[F2,f2]=fft_analyse(wave_proc,8000);
+subplot(1,2,1);
+plot(f,abs(F));
+title('realwave');
+subplot(1,2,2);
+plot(f2,abs(F2));
+title('wave\_proc');

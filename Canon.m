@@ -31,9 +31,11 @@ last_time =[	4,4,4,4,...
 		3,1, 1,1,1,1, 3,1, 1,1,1,1,...
 		3,1, 1,1,1,1 3,1, 2,1,1,...
 		4,4,4,4,...
-		4,4,4,0.5,0.5,0.5,0.5,0.33,0.33,0.34,0.5,0.5,4];
+		4,4,4,0.5,0.5,0.5,0.5,0.25,0.25,0.5,0.5,0.5,4];
 
-song = song_creation2(song_tone,last_time,one_step,fs,basic_f,3);%第一声道的歌
+song = fourier_song_creation(song_tone,last_time,one_step,fs,basic_f,2);%第一声道的歌
+plot(song);
+
 
 song_tone2 = [	1,5,6,3,...
 		4,1,4,5,...
@@ -49,9 +51,11 @@ song_tone2 = [	1,5,6,3,...
 		4,1,4,5,1];
 last_time2 = 4*ones(1,length(song_tone2));
 
-song2 = song_creation2(song_tone2,last_time2,one_step,fs,basic_f,3);    %第二声道
+song2 = fourier_song_creation(song_tone2,last_time2,one_step,fs,basic_f,5);    %第二声道
 
-Canon_song = song + 0.3*song2;                      %合成
+Canon_song = song + 0.1*song2;                      %合成
 Canon_song = Canon_song/max(Canon_song);            %归一化
+plot(Canon_song);
+title('Canon');
 sound(Canon_song);
 audiowrite( 'Canon.wav',Canon_song,fs);

@@ -23,14 +23,17 @@ if(method == 1)
                 (t>=end_time-time/3 & t<end_time).*(-2.4/time*(t-end_time));
     
 elseif(method == 2)
-    A_range =   (t>=begin_time & t<begin_time+time/6).*(6/time*(t-begin_time)) + ...
-                (t>=begin_time+time/6 & t<end_time).* exp(-18/5/time*(t-begin_time-time/6)); 
+    A_range =   (t>=begin_time & t<begin_time+time/20).*(20/time*(t-begin_time)) + ...
+                (t>=begin_time+time/20 & t<end_time).* exp(-100/19/time*(t-begin_time-time/20)); 
 elseif(method == 3)
     A_range =   (t>=begin_time & t<begin_time+time/3).*sin(3*pi/2/time*(t-begin_time)) + ...
                 (t>=begin_time+time/3 & t<end_time).*(1./(1+exp(15/time*(t-begin_time-2/3*time)))+0.0067);
 elseif(method == 4)
-    mul = exp(1);
-    A_range = (t>=begin_time & t<end_time) .* (mul*5/time*(t-begin_time).*exp(-5/time*(t-begin_time)));
+     A_range =   (t>=begin_time & t<begin_time+time/20).*(20/time*(t-begin_time)) + ...
+         (t>=begin_time+time/20 & t<end_time).*(-20/19/time*(t-end_time));
+elseif(method == 5)
+      A_range =   (t>=begin_time & t<begin_time+time/20).*(20/time*(t-begin_time)) + ...
+                (t>=begin_time+time/20 & t<end_time).* exp(-60/19/time*(t-begin_time-time/20)); 
 end
 plot(A_range);
 f = f.*A_range;     %包络
